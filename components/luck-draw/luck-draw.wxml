@@ -1,0 +1,19 @@
+<view catchtouchmove="true" class="luck-draw ">
+    <view class="anima-2 {{showAnima?'anima':''}}" wx:if="{{circleBag.length}}">
+        <view class="anima-2-opacity ">
+            <view class="anima-2-rotate ">
+                <view class="card-wrap" style="transform:{{item.transform}}" wx:for="{{circleBag}}">
+                    <view class="card">
+                        <image class="card-img {{index===3?'anima-bag-scale':''}}" mode="{{mode}}" src="{{cardSrc}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="anima-dialog-opacity" wx:if="{{showDialog}}">
+        <view class="anima-dialog-scale">
+            <luck-draw-card dialogText="{{dialogText}}"></luck-draw-card>
+            <view bindtap="closeLuckDraw" class="dialog-close "></view>
+        </view>
+    </view>
+</view>

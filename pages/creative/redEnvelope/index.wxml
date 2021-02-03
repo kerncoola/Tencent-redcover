@@ -1,0 +1,163 @@
+<view class="container red-envelope-page">
+    <view class="top-info">
+        <view bindtap="scrollBottom" class="top-info-a">领取规则</view>
+    </view>
+    <mp-sticky wx:if="{{platform==='ios'}}">
+        <mp-tabs activeClass="tab-bar-title__selected" activeTab="{{activeTab}}" bindtabclick="onTabCLick" tabClass="tab-bar-title" tabs="{{redBagNav}}"></mp-tabs>
+    </mp-sticky>
+    <mp-tabs activeClass="tab-bar-title__selected" activeTab="{{activeTab}}" bindtabclick="onTabCLick" platform="{{platform}}" tabClass="tab-bar-title" tabs="{{redBagNav}}" wx:else></mp-tabs>
+    <view bindtap="toNextTab" class="next-tab-icon" style="display: {{nexIconshow}}"></view>
+    <swiper skipHiddenItemLayout bindchange="changeSwiper" class="swiper-class {{fadeShow?'fadeShow':''}}" current="{{swiperIndex}}" duration="{{swipeDuration}}" nextMargin="130rpx" previousMargin="130rpx">
+        <swiper-item class="swiper-block" itemId="{{item.have?item.title:''}}" wx:for="{{redBagList[activeTabKey].items}}" wx:key="index">
+            <text class="slide-name">{{item.title}}</text>
+            <button bindgetuserinfo="bindGetUserInfo" class="slide-cover {{swiperIndex==index?'active':'quiet'}}" disabled="{{getButtonState.disable||buttonLoading}}" openType="getUserInfo">
+                <view class="slide-image {{!item.have||isAllEmpty?'red-bag-empty':''}}">
+                    <img-ext src="{{item.imgUrl}}"></img-ext>
+                    <text class="empty-text" wx:if="{{!item.have||isAllEmpty}}">已抢完</text>
+                    <image class="slide-image-after" mode="aspectFill" src="http://static.taishan.qq.com/editor/poster/open-red.png"></image>
+                </view>
+            </button>
+        </swiper-item>
+        <swiper-item skipHiddenItemLayout class="swiper-block" itemId="custom">
+            <text class="slide-name">{{redBagNav[activeTab].rareName}}</text>
+            <button bindtap="inGroupChance" class="slide-cover slide-cover-rare {{activeTabKey}} {{swiperIndex==redBagList[activeTabKey].items.length?'active':'quiet'}}" data-key="VASD">
+                <view class="slide-image">
+                    <img-ext src="{{redBagList[activeTabKey].background}}"></img-ext>
+                    <image class="slide-image-after" mode="aspectFill" src="http://static.taishan.qq.com/editor/poster/open-red.png"></image>
+                </view>
+                <view class="slide-image-rare-mark">稀有</view>
+            </button>
+        </swiper-item>
+    </swiper>
+    <view class="button-wrap">
+        <view bindtap="showMoreChance" class="get-more-chance" style="display: {{chance?'none':'show'}}" wx:if="{{chance===0}}"></view>
+        <button bindtap="inGroupChance" class="get-redbag-button get-redbag-button-disabled" data-key="VASD" wx:if="{{swiperIndex==redBagList[activeTabKey].items.length}}">
+            <view class="redbag-text-ingroup">探索获得方法</view>
+            <view class="redbag-label">玩转更多红包</view>
+        </button>
+        <block wx:else>
+            <button bindtap="inGroupChance" class="get-redbag-button get-redbag-button-disabled {{buttonLoading?'get-redbag-button-loading':''}}" disabled="{{buttonLoading}}" wx:if="{{!unionid&&chance==0}}">
+                <mp-loading extClass="get-redbag-button-group-loading-gray" type="dot-gray" wx:if="{{buttonLoading}}"></mp-loading>
+                <block wx:else>
+                    <view class="redbag-text">进群交流心得</view>
+                    <view class="redbag-label">今日剩余0次，明日10:00刷新机会</view>
+                </block>
+            </button>
+            <block wx:else>
+                <button bindgetuserinfo="bindGetUserInfo" class="get-redbag-button {{true?'get-redbag-butto-loading':''}} {{getButtonState.disable||!chance?'get-redbag-button-disabled':''}}" disabled="{{getButtonState.disable||buttonLoading}}" openType="getUserInfo" wx:if="{{swiperIndex<redBagList[activeTabKey].items.length}}">
+                    <mp-loading extClass="get-redbag-button-group-loading" type="dot-white" wx:if="{{buttonLoading}}"></mp-loading>
+                    <block wx:else>
+                        <view class="redbag-text">
+              {{chance?getButtonState.text[0]:getButtonState.text[0]=='你已领取本款'?'你已领取本款':'进群交流心得'}}
+            </view>
+                        <view class="redbag-label">
+              {{getButtonState.text[1]}}
+              <view class="redbag-label-num">
+                                <text class="redbag-label-num-none">{{getButtonState.text[2]?chance:''}}</text>
+                                <text class="redbag-label-num-show">{{getButtonState.text[2]?chance:''}}</text>
+                            </view>
+              {{chance?getButtonState.text[2]?getButtonState.text[2]:'':getButtonState.text[0]=='你已领取本款'?'':'次，明日10:00刷新机会'}}
+            </view>
+                    </block>
+                </button>
+                <button bindtap="inGroupChance" class="get-redbag-button" data-key="VASD" wx:elif="{{swiperIndex==redBagList[activeTabKey].items.length}}">
+                    <view class="redbag-text-ingroup">探索获得方法</view>
+                    <view class="redbag-label">玩转更多红包</view>
+                </button>
+            </block>
+        </block>
+        <button bindtap="onShare" class="share-button"></button>
+    </view>
+    <view bindtap="openPrizeHistoryList" class="prize-history" wx:if="{{prizeListShow}}">
+        <text>查看中奖奖品</text>
+    </view>
+    <mp-half-screen-dialog closabled="{{false}}" extClass="half-dialog" show="{{follwedHalfDialog}}">
+        <view class="half-dialog-title" slot="title">
+      {{halfDialogInfo=='public'?'活动详情':halfDialogInfo=='group'?'进群交流':'做任务获得更多机会'}}
+      <view bindtap="closeHalfDialog" class="half-dialog-close">
+                <view class="half-dialog-close-img"></view>
+            </view>
+        </view>
+        <view class="half-dialog-desc" slot="desc" wx:if="{{halfDialogInfo=='group'}}">
+            <view class="half-dialog-groupin" wx:if="{{!toptipsMsg}}">
+                <view class="half-dialog-groupin-info">
+                    <image class="half-dialog-desc-logo-group" src="http://static.taishan.qq.com/editor/poster/red.png"></image>
+                    <view class="half-dialog-groupin-label">
+                        <view class="half-dialog-desc-title-group">今天rua点啥</view>
+                        <text class="half-dialog-desc-label-group">红包封面经验交流群</text>
+                    </view>
+                </view>
+                <view bindtap="startmessage" class="get-redbag-button-group">
+                    <mp-loading extClass="get-redbag-button-group-loading" show="{{groupLoading}}" type="dot-white" wx:if="{{groupLoading}}"></mp-loading>
+                    <cell bind:completemessage="completemessage" plugid="2302cee9a272d7859d1d7f41817937f6" style="width: 100%;visibility: {{groupLoading?'hidden':'visible'}}" wx:else></cell>
+                </view>
+            </view>
+            <block wx:else>
+                <view class="half-dialog-desc-title">已为您发送进群链接</view>
+                <text class="half-dialog-desc-label">请在微信消息“服务通知”中查看</text>
+                <view bindtap="completemessageOK" class="get-redbag-button-group">
+                    <text class="get-redbag-button-group-text">好的</text>
+                </view>
+            </block>
+        </view>
+        <view class="half-dialog-video" slot="desc" wx:if="{{halfDialogInfo=='video'}}">
+            <view class="half-dialog-video-block">
+                <image class="half-dialog-desc-logo" src="http://wx.qlogo.cn/mmopen/2yoHDw7TctDPhOXqeibPDXTjfIzuXcI3fdPEmQibkCjIC250klCU4J8PzXtiaaPvxMIema2fIqO0NE2Ebl1ia7wzgCWhyhBsu6zf/64"></image>
+                <view>
+                    <view class="half-dialog-video-title">前往公众号CSD新奇馆</view>
+                    <view class="half-dialog-video-label">更多精彩</view>
+                </view>
+                <view bindtap="routerFollow" class="half-dialog-video-button {{followed?'dialog-video-button-finish':''}}" data-disable="{{followed}}" data-key="VASD">
+            {{followed?'已完成':'去看看'}}
+          </view>
+            </view>
+            <view class="half-dialog-video-block">
+                <image class="half-dialog-desc-logo" src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM5JGrbHINT6nrBQsB8ullVB1swthJM8bibCM1pF3tspYCw/0"></image>
+                <view>
+                    <view class="half-dialog-video-title">前往公众号智绘泰山</view>
+                    <view class="half-dialog-video-label">更多精彩</view>
+                </view>
+                <view bindtap="routerFollow" class="half-dialog-video-button {{taishan?'dialog-video-button-finish':''}}" data-disable="{{taishan}}" data-key="taishan">
+            {{taishan?'已完成':'去看看'}}
+          </view>
+            </view>
+            <view class="half-dialog-video-block">
+                <image class="half-dialog-desc-logo" src="http://static.taishan.qq.com/editor/poster/coscat.png"></image>
+                <view>
+                    <view class="half-dialog-video-title">前往视频号CosCat</view>
+                    <view class="half-dialog-video-label">
+              更多精彩
+            </view>
+                </view>
+                <view bindtap="routerFollow" class="half-dialog-video-button {{coscat?'dialog-video-button-finish':''}}" data-disable="{{coscat}}" data-key="coscat">
+            {{coscat?'已完成':'去看看'}}
+          </view>
+            </view>
+        </view>
+        <block wx:if="{{halfDialogInfo=='public'}}">
+            <view class="half-dialog-desc" slot="desc">
+                <view class="half-dialog-desc-title">
+                    <image class="half-dialog-desc-logo" src="http://wx.qlogo.cn/mmopen/2yoHDw7TctDPhOXqeibPDXTjfIzuXcI3fdPEmQibkCjIC250klCU4J8PzXtiaaPvxMIema2fIqO0NE2Ebl1ia7wzgCWhyhBsu6zf/64"></image>
+          CSD新奇馆
+        </view>
+                <text class="half-dialog-desc-label">超多新奇等你体验</text>
+            </view>
+            <button bindtap="routerFollow" class="get-redbag-button" slot="footer">
+                <text style="fontWeight: 'bold'">去看看</text>
+            </button>
+        </block>
+    </mp-half-screen-dialog>
+    <view class="regulation">
+        <text class="regulation-title">领取规则</text>
+        <view class="regulation-label">
+            <text class="regulation-label-text">每日限量抽取1000个！每人在活动中限领1款红包封面！</text>
+            <text class="regulation-label-text">1月28日-2月10日每天上午10:00刷新2次抽奖机会，进群可以和群友交流封面心得。</text>
+            <text class="regulation-label-text">郑重声明：抽奖的个人信息仅用于记录发放本次红包抽取的奖品，不作其他用途。</text>
+        </view>
+    </view>
+    <luck-draw bind:showLuckDraw="showLuckDraw" chooseRedBagUrl="{{chooseRedBagUrl}}" lottery="{{lottery}}" wx:if="{{startDraw&&lottery}}"></luck-draw>
+    <prize-history-list bind:closePrizeHistoryList="closePrizeHistoryList" prizeList="{{prizeList}}" wx:if="{{isShowHistory&&prizeListShow}}"></prize-history-list>
+    <image src="//static.taishan.qq.com/editor/users-upload/5e612c6235203610aba230bc/82d83960879dd5a58219e7e59b46353b.png" style="display:none"></image>
+    <image class="slide-image-after" src="//static.taishan.qq.com/editor/users-upload/5e612c6235203610aba230bc/e88cb17d8857a505b0a7389586882f35.png" style="display:none"></image>
+    <mp-dialog bindbuttontap="tapChancePlus" buttons="{{[ {text:'去挑一个'} ]}}" show="{{showChancePlus}}" title="已成功领取抽封面机会"></mp-dialog>
+</view>

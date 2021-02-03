@@ -1,0 +1,3 @@
+<view class="container">
+    <web-view bindmessage="receivePostMsg" src="{{path}}"></web-view>
+</view>

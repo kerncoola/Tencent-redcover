@@ -1,0 +1,157 @@
+.dialog-main,.luck-dialog {
+    position: relative;
+    overflow: hidden;
+}
+
+.luck-dialog {
+    padding: 50rpx;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-color: #fff5f1;
+    width: 625rpx;
+    border-radius: 28rpx;
+}
+
+.luck-dialog .dialog-note,.luck-dialog .dialog-tit {
+    text-align: center;
+    color: #505050;
+}
+
+.luck-dialog .dialog-tit .dialog-tit_main {
+    font-weight: 700;
+    font-size: 36rpx;
+    line-height: 50rpx;
+}
+
+.luck-dialog .dialog-tit .dialog-tit_desc {
+    font-size: 30rpx;
+    line-height: 42rpx;
+}
+
+.luck-dialog .dialog-note {
+    font-size: 30rpx;
+}
+
+.luck-dialog .dialog-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: .79;
+    z-index: 0;
+}
+
+.luck-dialog .dialog-bg.bag {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.luck-dialog .dialog-bg.bag .dialog-bg-img {
+    width: 645rpx;
+    height: 956rpx;
+}
+
+.dialog-main {
+    width: 442rpx;
+    height: 710rpx;
+    margin: 25rpx auto 15rpx;
+    border-radius: 15rpx;
+    z-index: 10;
+}
+
+.dialog-main.bag {
+    padding: 16rpx 16rpx 0;
+    background-color: #fff;
+    border: 1rpx solid #f35543;
+}
+
+.dialog-main.bag .dialog-main-bag {
+    position: relative;
+    width: 410rpx;
+    height: 678rpx;
+    border-radius: 12rpx;
+    overflow: hidden;
+    background-color: #e63829;
+}
+
+.dialog-main .dialog-main-other {
+    width: 442rpx;
+    height: 710rpx;
+    border-radius: 12rpx;
+    overflow: hidden;
+}
+
+.dialog-main .dialog-main-other .dialog-main-img {
+    width: 100%;
+    height: 100%;
+}
+
+.dialog-main.bag .dialog-main-img {
+    width: 410rpx;
+    height: 548rpx;
+}
+
+.slide-image-after {
+    position: absolute;
+    bottom: 0;
+    height: 580rpx;
+    width: 100%;
+    left: 0;
+    border-radius: 0 0 16rpx 16rpx;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.dialog-btn {
+    position: relative;
+    width: 495rpx;
+    height: 98rpx;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 36rpx;
+    line-height: 98rpx;
+    z-index: 10;
+}
+
+.dialog-btn button {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-top: 48rpx;
+    color: #3e3e3e;
+    font-weight: 700;
+    background: #ebcd9a;
+    box-shadow: 0 11rpx 30rpx 0 rgba(218,152,118,.45),inset 2rpx 1rpx 0 0 hsla(0,0%,100%,.1);
+    border-radius: 15rpx;
+}
+
+.dialog-btn.bag button {
+    color: #fff;
+    background-image: linear-gradient(118deg,#ee3f2b,#ff8e6b);
+    box-shadow: 0 15rpx 31rpx 0 rgba(255,0,0,.3),inset 2rpx 1rpx 0 0 hsla(0,0%,100%,.1);
+}
+
+.dialog-btn .dialog-down-icon {
+    width: 35rpx;
+    height: 35rpx;
+    margin-right: 20rpx;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAmCAMAAABwIXKiAAAAbFBMVEUAAABAQED///8/Pz9AQEA+Pj4+Pj4+Pj4/Pz8+Pj4/Pz8+Pj4+Pj4/Pz8/Pz8/Pz8/Pz9AQEBAQEBAQEBBQUE+Pj4+Pj4+Pj4+Pj4+Pj4/Pz8+Pj4+Pj4/Pz9AQEBAQEBBQUFCQkJFRUU+Pj50Nz70AAAAI3RSTlMAgAGdW0rByj/w3tSyqqWLb2ZDKyP66uW5l5KDd1VQODMfGjXEf0oAAAC/SURBVDjLvdPHDsIwEEXRuKUACS30zvv/f0Qy0VjJCOutuCtrdCTPZgqV9d4WRB7wjDPAhXFXYMm4Fe/OjFsDJ9I5xnnedYy7AS3j7sCCcYF0G+BIupJxdd7ZEGx8PIBqNFPruzh8irMOCNoNcAvMhWlnXYTiZPAL9sBMMw1f0Smm4Bs4aKZhB+yF5SDQCMvDnWLq/CMUloicf4JT9iUGMOMPmgmLRLuir9rEtEtZYcqp/uFKk68cHBHvasNUfwAnWyKfBSMmOQAAAABJRU5ErkJggg==);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.dialog-close {
+    width: 62rpx;
+    height: 62rpx;
+    margin-top: 20rpx;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAMAAABEH1h2AAAAbFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8+T+BWAAAAI3RSTlMAFNT5CNs47t/KxX5iWUcPiSfz587Mwrqpo5+OhGNNIyActVX+TuoAAAHUSURBVEjHnNPJloIwEIXhi1UJs+AsiAze93/HXnXTgIngv4LFd5KTOgVHRZtWcRSKhFFcpW2BDXVpLJwkcdqtxHlCUq5lZvtANehtVl6FZJKvwE9DHuu9YpLu6yNpnvBnz6TJFG/SzJBn69MPMvJcMY/IB1wVN0qj8KSN8OaYwsHwZPEhe6I54E37kJcBHxsuDPdvtPCuWJHeKQt/CFliZSXD2f0LwztWd6eZvt+NF13P9cLbdN6nARsaTv/nbykWm7LCUZzZYGMNz39bwki3co34uz+GOTaX04wfmxsPTZh9wzMmANDxqN9wPbIDkLLGrFcSYFqQvBa+Zgog5mIBEu6Cqd4xWS4ZY6AQUcwKdqMf/+epSIGWV8DhvRq4skXKEi7v1yiZomIGl/drZKwQ08LpvRqWMSL2cHufRs8IIQO4/cGjETCEUOH24tFQyk/pZWwDAAjDMCRGJlZW/v+R0RuS5QMqSpukya987HnnHr9ymhev0zyjE39ndCxOTJ7FARuxd2ADaAXqAC2UEZiHMhBWMA7CIheC78gFYqXV5tyFVAqtQyqbUMcz0Y5UPJHtQEd70MxJs0bRmDVb2Exps8TNkLc40MJIj0I9iPUY2ENojMAPRsEy3BApdt0AAAAASUVORK5CYII=);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "mp-loading": "/miniprogram_npm/weui-miniprogram/loading/loading"
+    }
+}

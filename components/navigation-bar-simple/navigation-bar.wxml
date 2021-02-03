@@ -1,0 +1,11 @@
+<view bindtouchstart="doubleClick" class="weui-navigation-bar {{extClass}}">
+    <view class="weui-navigation-bar__placeholder" style="height:{{innerHeight}}px;visibility: hidden;"></view>
+    <view class="weui-navigation-bar__inner" style="padding-top:{{statusBarHeight}}px;padding-right:{{innerRight}}px;padding-left:{{menuButtonRight}}px;height:{{innerHeight}}px;{{displayStyle}};">
+        <view class="weui-navigation-bar__left" style="width:{{menuButtonWidth}}px;">
+            <slot name="left"></slot>
+        </view>
+        <view class="weui-navigation-bar__center">
+            <slot name="center"></slot>
+        </view>
+    </view>
+</view>

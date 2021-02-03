@@ -1,0 +1,18 @@
+{
+    "navigationBarTitleText": "微信红包封面限量抽",
+    "navigationBarBackgroundColor": "#f04730",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "mp-tabs": "../../../components/mp-tabs/index",
+        "mp-half-screen-dialog": "/miniprogram_npm/weui-miniprogram/half-screen-dialog/half-screen-dialog",
+        "mp-toptips": "/miniprogram_npm/weui-miniprogram/toptips/toptips",
+        "navigation-bar": "../../../components/navigation-bar-simple/navigation-bar",
+        "img-ext": "../../../components/image-extend/image-extend",
+        "luck-draw": "../../../components/luck-draw/luck-draw",
+        "prize-history-list": "../../../components/prize-history-list/prize-history-list",
+        "mp-sticky": "../../../components/mp-sticky/index",
+        "mp-loading": "/miniprogram_npm/weui-miniprogram/loading/loading",
+        "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
+        "cell": "plugin://wxaae6519cee98d824/cell"
+    }
+}

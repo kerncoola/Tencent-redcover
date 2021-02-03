@@ -1,0 +1,16 @@
+<view class="weui-tabs {{platform==='android'?'android':''}}">
+    <view class="weui-tabs-bar__wrp {{menuFixed?'fixed':''}}" id="affix">
+        <scroll-view scrollX scrollIntoView="item_{{currentView}}" scrollWithAnimation="{{animation}}">
+            <view class="weui-tabs-bar__content">
+                <view bindtap="handleTabClick" class="weui-tabs-bar__item" data-index="{{index}}" id="item_{{index}}" style="color: {{activeTab===index?tabActiveTextColor:tabInactiveTextColor}}; " wx:for="{{tabs}}" wx:key="title">
+                    <view class="weui-tabs-bar__title {{tabClass}} {{activeTab===index?activeClass:''}}" style="border-bottom-color: {{activeTab===index?tabUnderlineColor:'none'}};">
+                        <image class="weui-tabs-bar__icon {{activeTab===index?'tabs-bar__icon-active':''}}" mode="aspectFit" src="{{item.iconUrl}}"></image>
+                        <view class="weui-tabs-bar__text {{activeTab===index?'tabs-bar__text-active':''}}">
+                {{item.title}}
+              </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

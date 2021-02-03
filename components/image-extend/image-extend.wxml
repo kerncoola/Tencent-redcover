@@ -1,0 +1,2 @@
+<mp-loading extClass="image-load" type="dot-white" wx:if="{{loadSuccess!=src}}"></mp-loading>
+<image binderror="_loadError" bindload="_loadSuccess" class="image-extend {{loadSuccess!=src?'img_none':''}} {{isDialog?'dialog':''}}" lazyLoad="{{lazyLoad}}" mode="{{mode}}" src="{{src}}"></image>

@@ -1,0 +1,70 @@
+.weui-tabs {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 146rpx;
+    background: #fff5f1;
+    box-shadow: 0 2rpx rgba(0,0,0,.03);
+}
+
+.weui-tabs.android {
+    position: sticky;
+    z-index: 99;
+}
+
+.weui-tabs-bar__wrp {
+    width: 100%;
+    padding-top: 0;
+}
+
+.weui-tabs-bar__content {
+    width: 750rpx;
+    white-space: nowrap;
+    height: 100%;
+}
+
+.weui-tabs-bar__item {
+    display: inline-block;
+}
+
+.weui-tabs-bar__title {
+    background: #fff5f1;
+    height: 130rpx;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 105rpx;
+    padding-top: 8rpx;
+}
+
+.weui-tabs-bar__icon {
+    width: 82rpx;
+    height: 82rpx;
+    opacity: .5;
+}
+
+.weui-tabs-bar__text {
+    line-height: 2;
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #7c7c7c;
+}
+
+.tabs-bar__text-active {
+    font-family: PingFangSC-Semibold;
+    color: #313131;
+    font-weight: 700;
+}
+
+.tabs-bar__icon-active {
+    opacity: 1;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+}

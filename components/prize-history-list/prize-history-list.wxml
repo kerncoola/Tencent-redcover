@@ -1,0 +1,10 @@
+<view catchtouchmove="true" class="prize-history-list ">
+    <swiper indicatorDots skipHiddenItemLayout class="prize-history-list-swiper" indicatorActiveColor="#333" indicatorColor="#999">
+        <swiper-item class="swiper-block" wx:for="{{prizesData}}" wx:key="index">
+            <view class="slide-cover">
+                <luck-draw-card dialogText="{{item}}"></luck-draw-card>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view bindtap="_closePrizeHistory" class="dialog-close "></view>
+</view>

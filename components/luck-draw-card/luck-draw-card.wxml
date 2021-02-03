@@ -1,0 +1,35 @@
+<view class="luck-dialog">
+    <view class="dialog-tit">
+        <view class="dialog-tit_main">{{dialogText.title[0]}}</view>
+        <view class="dialog-tit_desc">{{dialogText.title[1]}}</view>
+    </view>
+    <view class="dialog-main bag" wx:if="{{dialogText.type==='bag'}}">
+        <view class="dialog-main-bag">
+            <image-extend isDialog src="{{dialogText.img}}"></image-extend>
+            <image class="slide-image-after" mode="aspectFit" src="//static.taishan.qq.com/editor/users-upload/5e612c6235203610aba230bc/e88cb17d8857a505b0a7389586882f35.png"></image>
+        </view>
+    </view>
+    <view class="dialog-main " wx:else>
+        <view class="dialog-main-other">
+            <image class="dialog-main-img" mode="scaleToFill" src="{{dialogText.img}}"></image>
+        </view>
+    </view>
+    <view class="dialog-note " wx:if="{{dialogText.extra.length}}">
+        <view wx:for="{{dialogText.extra}}">{{item}}</view>
+    </view>
+    <view class="dialog-btn bag" wx:if="{{dialogText.type==='bag'}}">
+        <button bindtap="reciveBag">{{dialogText.btn}}</button>
+    </view>
+    <view class="dialog-btn " wx:if="{{dialogText.type==='bg'}}">
+        <button bindtap="saveImg">
+            <view class="dialog-down-icon"></view>
+      {{dialogText.btn}}
+    </button>
+    </view>
+    <view class="dialog-btn " wx:if="{{dialogText.type==='member'}}">
+        <button bindtap="toWebView">{{dialogText.btn}}</button>
+    </view>
+    <view class="dialog-bg bag" wx:if="{{dialogText.type==='bag'}}">
+        <image class="dialog-bg-img" mode="aspectFill" src="https://static.taishan.qq.com/editor/users-upload/5e612c6235203610aba230bc/49064f10e824f8dd489b6ae88e105828.png"></image>
+    </view>
+</view>

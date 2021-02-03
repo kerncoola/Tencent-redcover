@@ -1,0 +1,269 @@
+@-webkit-keyframes rotate {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@-webkit-keyframes bag-opacity {
+    0% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes bag-opacity {
+    0% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes bag-flip {
+    0% {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes bag-flip {
+    0% {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+@-webkit-keyframes bag-scale {
+    0% {
+        transform: scale(1.2);
+    }
+
+    to {
+        transform: scale(.9);
+    }
+}
+
+@keyframes bag-scale {
+    0% {
+        transform: scale(1.2);
+    }
+
+    to {
+        transform: scale(.9);
+    }
+}
+
+@-webkit-keyframes circle-move {
+    0% {
+        opacity: 0;
+        transform: translateY(300rpx);
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes circle-move {
+    0% {
+        opacity: 0;
+        transform: translateY(300rpx);
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes dialog-opacity {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes dialog-opacity {
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes dialog-scale {
+    to {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes dialog-scale {
+    to {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.luck-draw {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 999;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    flex-direction: column;
+    perspective: 1000;
+    transform-style: preserve-3d;
+}
+
+.anima-1,.back,.front {
+    position: absolute;
+    transition: all 1s;
+}
+
+.anima-1 {
+    bottom: 178rpx;
+    transform-style: preserve-3d;
+    border-radius: 12rpx;
+    z-index: 2000;
+    overflow: hidden;
+    left: 190rpx;
+    width: 360rpx;
+    height: 572rpx;
+}
+
+.anima-1.anima .front {
+    transform: rotateY(-180deg);
+}
+
+.anima-1.anima .back {
+    transform: rotateY(0);
+}
+
+.back,.front {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.front {
+    z-index: 10;
+}
+
+.back {
+    transform: rotateY(-180deg);
+}
+
+.anima-2 {
+    position: absolute;
+    bottom: -650rpx;
+    left: 50%;
+    width: 1200rpx;
+    height: 1200rpx;
+    margin-left: -600rpx;
+    will-change: transform;
+}
+
+.anima-2.anima {
+    animation: circle-move 2s both;
+}
+
+.anima-2-rotate,.anima-2.anima .anima-2-rotate {
+    animation: rotate 2s both;
+}
+
+.anima-2.anima .anima-2-opacity {
+    animation: bag-opacity 2.5s ease-out 1.8s forwards;
+}
+
+.anima-2.anima .anima-bag-scale {
+    animation: bag-scale .1s ease-in-out 1.8s forwards;
+}
+
+.anima-2-rotate {
+    position: relative;
+    width: 1200rpx;
+    height: 1200rpx;
+    will-change: transform;
+}
+
+.anima-2 .card-wrap {
+    display: inline-block;
+    width: 25%;
+    height: 25%;
+    position: absolute;
+    left: -12.5%;
+    top: 50%;
+    transform: translate(0,-50%);
+    transform-origin: 250% 50%;
+    box-sizing: border-box;
+}
+
+.anima-2 .card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.anima-2 .card .card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 159%;
+    transform: scale(1.2);
+}
+
+.dialog-close {
+    width: 62rpx;
+    height: 62rpx;
+    margin-top: 20rpx;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAMAAABEH1h2AAAAbFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8+T+BWAAAAI3RSTlMAFNT5CNs47t/KxX5iWUcPiSfz587Mwrqpo5+OhGNNIyActVX+TuoAAAHUSURBVEjHnNPJloIwEIXhi1UJs+AsiAze93/HXnXTgIngv4LFd5KTOgVHRZtWcRSKhFFcpW2BDXVpLJwkcdqtxHlCUq5lZvtANehtVl6FZJKvwE9DHuu9YpLu6yNpnvBnz6TJFG/SzJBn69MPMvJcMY/IB1wVN0qj8KSN8OaYwsHwZPEhe6I54E37kJcBHxsuDPdvtPCuWJHeKQt/CFliZSXD2f0LwztWd6eZvt+NF13P9cLbdN6nARsaTv/nbykWm7LCUZzZYGMNz39bwki3co34uz+GOTaX04wfmxsPTZh9wzMmANDxqN9wPbIDkLLGrFcSYFqQvBa+Zgog5mIBEu6Cqd4xWS4ZY6AQUcwKdqMf/+epSIGWV8DhvRq4skXKEi7v1yiZomIGl/drZKwQ08LpvRqWMSL2cHufRs8IIQO4/cGjETCEUOH24tFQyk/pZWwDAAjDMCRGJlZW/v+R0RuS5QMqSpukya987HnnHr9ymhev0zyjE39ndCxOTJ7FARuxd2ADaAXqAC2UEZiHMhBWMA7CIheC78gFYqXV5tyFVAqtQyqbUMcz0Y5UPJHtQEd70MxJs0bRmDVb2Exps8TNkLc40MJIj0I9iPUY2ENojMAPRsEy3BApdt0AAAAASUVORK5CYII=);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.anima-dialog-opacity {
+    opacity: 0;
+    animation: dialog-opacity .4s ease-in-out forwards;
+}
+
+.anima-dialog-scale {
+    transform: translateY(160rpx) scale(.39);
+    animation: dialog-scale .4s cubic-bezier(.74,.2,.38,1.24) .1s forwards;
+}

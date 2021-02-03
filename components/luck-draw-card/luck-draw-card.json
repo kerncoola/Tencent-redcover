@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "image-extend": "../image-extend/image-extend"
+    }
+}
